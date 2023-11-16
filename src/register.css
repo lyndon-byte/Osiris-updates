@@ -1,0 +1,44 @@
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+
+
+#fname:focus, #lname:focus, #emailinput:focus, #phonenum:focus, #pwordinput1:focus , #pwordinput2:focus{
+
+  box-shadow: none;
+  
+  
+}
+
+
+#pwordinput1, #pwordinput2{
+
+  
+  border-top-right-radius: 0%;
+  border-bottom-right-radius: 0%;
+  border-top-left-radius: 4%;
+  border-bottom-left-radius: 4%;
+}
+
+#pwordeye1,#pwordeye2{
+
+  border-top-left-radius: 0%;
+  border-bottom-left-radius: 0%;
+  border-top-right-radius: 10%;
+  border-bottom-right-radius: 10%;
+
+}
+
+
+@media (max-width: 990px){
+
+   .row{
+
+    margin-top: 100px;
+    
+   }
+
+}

@@ -1,0 +1,20 @@
+#uname:focus, #pword:focus{
+
+
+   
+   box-shadow: none;
+
+}
+
+.pworderrormsg{
+
+   font-size: 14px;
+
+}
+
+.emailerrormsg{
+
+   font-size: 14px;
+
+}
+
