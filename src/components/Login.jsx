@@ -9,7 +9,7 @@ import Modal from 'react-bootstrap/Modal';
 import {Link} from "react-router-dom"
 import {useState} from 'react'
 import { app } from "./firebaseconfig";
-import { getAuth, signInWithEmailAndPassword, signOut  } from "firebase/auth";
+import { getAuth, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { useNavigate } from 'react-router-dom';
 
 const auth = getAuth(app)
@@ -31,9 +31,36 @@ function LoginForm(){
     const [pwordtype,setpwordtype] = useState(false);
     const [loginstatus,setloginstatus] = useState(false);
 
+    const provider = new GoogleAuthProvider;
+
     const navigate = useNavigate();
 
     const handleClose = () => setloginstatus(false)
+
+    const loginwithgoogle = () => {
+
+        signInWithPopup(auth, provider)
+        .then((result) => {
+            // This gives you a Google Access Token. You can use it to access the Google API.
+            const credential = GoogleAuthProvider.credentialFromResult(result);
+            const token = credential.accessToken;
+            // The signed-in user info.
+            const user = result.user;
+            console.log(user)
+            console.log(user.providerId)
+        }).catch((error) => {
+            // Handle Errors here.
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            // The email of the user's account used.
+            const email = error.customData.email;
+            // The AuthCredential type that was used.
+            const credential = GoogleAuthProvider.credentialFromError(error);
+            // ...
+        });
+
+
+    }
 
     function showpassword(){
         
@@ -106,7 +133,7 @@ function LoginForm(){
                                     <div>
                                     
                                         <div className='text-center'>
-                                        <h5 className="card-title text-muted">Login</h5>
+                                        <h5 className="card-title text-muted">Admin Login</h5>
                                         </div>
                                         
                                         <Formik
@@ -165,21 +192,27 @@ function LoginForm(){
                                                             {touched.password && errors.password && <p className='text-danger pworderrormsg'>{errors.password}</p>}
 
                                                             <button type='submit'  className="btn btn-primary w-100 border-0 rounded-1 mt-4">Login</button>
-                                                           
+                                                            
                                                         </div>
 
                                                     </Form>
-
+                                                            
 
                                                 )}
 
 
                                         </Formik>
+                                       
                                         <div className='text-center'>
                                             <p style={{fontSize: 14 + 'px'}}>You don't have account? <a href="/register">Register</a></p>
-                                            <p className="mt-2 mb-5" style={{fontSize: 14 + 'px'}}><Link to="/register" className="text-success">Forgot your Password?</Link></p>
+                                            <p className="mt-2 mb-1" style={{fontSize: 14 + 'px'}}><Link to="/register" className="text-success">Forgot your Password?</Link></p>
                                         </div>                                                                                                    
-
+                                        <div className="row">
+                                            <div className="col-8 m-auto mb-4 mt-3 text-center">
+                                                
+                                                <button   className="btn btn-outline-primary w-100 rounded-1 text-muted border-secondary" style={{fontSize: 14 + "px"}} onClick={loginwithgoogle}><i className='fa-brands fa-google'></i> Sign in with google</button>
+                                            </div>
+                                        </div>         
                                     </div>
                                     
                                 </div>

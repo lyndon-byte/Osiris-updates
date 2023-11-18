@@ -172,6 +172,7 @@ function RegistrationForm(){
                                             
                                             updateProfile(auth.currentUser, {
                                                 displayName: fullname, 
+                                               
                                             }).then(() => {
                                         
                                                 sendEmailVerification(auth.currentUser, actionCodeSettings)
