@@ -89,7 +89,7 @@ function Routing (){
 
                         <Route
 
-                            path="/dashboard"
+                            path="/dashboard/*"
                             element={ authenticated ? <Dashboard/> : <CheckingPermission/>}
                         />
 

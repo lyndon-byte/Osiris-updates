@@ -1,0 +1,21 @@
+.sidebarbtntext {
+
+
+    line-height:25px;
+
+}
+
+.material-icons {
+
+    display: inline-flex;
+    vertical-align: top;
+
+}
+
+
+@media (max-width: 900px) {
+    .data-row{
+
+        line-height: 85px;
+    }
+}

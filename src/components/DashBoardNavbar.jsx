@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router";
 import { app } from './firebaseconfig';
 import { getAuth , signOut } from "firebase/auth";
+import { useState } from "react";
 
 
 const auth = getAuth(app);
@@ -9,12 +10,15 @@ const auth = getAuth(app);
 
 function DashBoardNavbar (){
 
+    const [user,setUser] = useState(auth.currentUser);
+
     const navigate = useNavigate();
     
     const handleSignOut = () => {
         
         signOut(auth).then(() => {
              console.log('sign out success')
+             setUser("")
              navigate('/login');
           }).catch((error) => {
             // An error happened.
@@ -38,7 +42,7 @@ function DashBoardNavbar (){
                                 </li>
                             </ul>
                             <span className="navbar-text"> 
-                                Lyndon Cuartero
+                                {user.displayName}
                             </span>
                             
                             <div className="btn-group">

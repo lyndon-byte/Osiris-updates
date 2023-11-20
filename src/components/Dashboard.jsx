@@ -7,7 +7,8 @@ import * as Yup from 'yup';
 import { getFirestore, doc ,setDoc, getDoc, collection} from "firebase/firestore";
 import { async } from "@firebase/util";
 import AdminInterface from "./AdminInterface";
-import AdminNavbar from "./DashBoardNavbar";
+import DashBoardNavbar from "./DashBoardNavbar";
+
 
 
 const auth = getAuth(app);
@@ -327,7 +328,7 @@ function Dashboard(){
     return (
 
         <>
-            <AdminNavbar/>
+            <DashBoardNavbar/>
             <PostRegistration name={user.displayName}/>
             <DashboardFooter/>
             
