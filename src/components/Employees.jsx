@@ -20,6 +20,7 @@ export default function Employee (){
     const [filterByDepartmentkeyword,setFilterByDepartmentkeyword] = useState('all')
     const [searchByNameandId,setsearchByNameandId] = useState("")
     const [searchSuccess,setSearchSuccess] = useState(true);
+    const [viewValue,setViewValue] = useState('')
 
     const fetchEmployeesDocument = async () => {
 
@@ -41,6 +42,12 @@ export default function Employee (){
         
 
     }
+
+    useEffect(() => {
+
+        console.log(viewValue);
+
+    },[viewValue])
 
     useEffect(() => {
 
@@ -174,7 +181,7 @@ export default function Employee (){
                                 <button className="btn btn-success border-0 rounded-1 mb-4 m-1" style={{fontSize: 16 + "px"}}><i className="fa-solid fa-file-csv"></i> Add using spreadsheet</button>
                                 <div className="float-end">
                                     <select className="form-select mb-4 rounded-1" aria-label="Default select example" onChange={(e) => {setFilterByDepartmentkeyword(e.target.value)  }}>
-                                                <option defaultValue>Select Department</option>
+                                                <option defaultValue value="all">Select Department</option>
                                                 <option value="all" >All</option>
                                                 <option value="Accounting">Accounting</option>
                                                 <option value="production">Production</option>
@@ -219,7 +226,7 @@ export default function Employee (){
                                                     <td className="data-row">{info.email}</td>
                                                     <td className="data-row">{info.designation}</td>
                                                     <td className="data-row">{info.department}</td>
-                                                    <td> <button className=" btn btn-primary rounded-1 border-0"> <i className="fa-regular fa-eye"></i> </button>  <button className=" btn btn-secondary rounded-1 border-0"> <i className="fa-regular fa-pen-to-square"></i> </button>   </td>
+                                                    <td> <button className=" btn btn-primary rounded-1 border-0"  onClick={(e) => {setViewValue(info.employeenum)}}> <i className="fa-regular fa-eye"></i> </button>  <button className=" btn btn-secondary rounded-1 border-0"> <i className="fa-regular fa-pen-to-square"></i> </button>   </td>
 
                                                 </tr>
 

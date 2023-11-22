@@ -12,6 +12,20 @@
 
 }
 
+.filebtn{
+    position: relative;
+    overflow: hidden;
+    font-size: 15px;
+
+  }
+.fileinput {
+    position: absolute;
+   
+    opacity: 0;
+    right: 0;
+    top: 0;
+  }
+
 
 @media (max-width: 900px) {
     .data-row{

@@ -10,7 +10,7 @@ function Error404(){
 
                  
   
-                <section className="bg-white">
+                <section className="bg-white" >
                     <div className="container-fluid">
                         <div className="row">
                             <div className="col-lg-12">
@@ -22,7 +22,7 @@ function Error404(){
                                 </div>
                             </div>
                         </div>
-                        <div className="row row-cols-1 justify-content-center py-5">
+                        <div className="row row-cols-1 justify-content-center py-5" style={{marginBottom: 250 + "px"}}>
                         
                             <div className="col text-center">
                                 <div className="lc-block">
@@ -32,9 +32,7 @@ function Error404(){
                                             <p className="rfs-11 fw-light"> The page you are looking for was moved, removed or might never existed.</p>
                                         </div>
                                     </div>
-                                    <div className="lc-block">
-                                        <Link className="btn btn-lg btn-primary border-0 rounded-1 fs-6" to="/" role="button">Back to homepage</Link>
-                                    </div>
+
                                 </div>
                             </div>
                         </div>

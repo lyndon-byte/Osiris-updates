@@ -6,6 +6,8 @@ import Attendance from './Attendance';
 import Performance from './Performance';
 import Training from './Training';
 import Reporting from "./Reporting";
+import EmployeeInfoInterface from "./EmployeeInfoInterface";
+import Error404 from './404'
 import {useState} from 'react';
 import { app } from './firebaseconfig';
 import { getAuth} from "firebase/auth";
@@ -131,6 +133,20 @@ function AdminInterface (){
 
                         path="dashboard/training"
                         element={ <Training/> }
+
+                    />
+
+                    <Route
+
+                        path="dashboard/employeeinterface"
+                        element={ <EmployeeInfoInterface/> }
+
+                    />
+
+                    <Route
+
+                        path="*"
+                        element={ <Error404/> }
 
                     />
 
