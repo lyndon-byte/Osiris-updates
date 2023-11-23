@@ -1,5 +1,12 @@
 import React, { useEffect, useState } from "react";
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
+import Card from 'react-bootstrap/Card';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 import {app} from './firebaseconfig';
+import { Link } from 'react-router-dom';
 import {getFirestore, doc,getDoc,query,getDocs, collection, where, getCountFromServer,and} from 'firebase/firestore';
 import {getAuth} from 'firebase/auth'
 import { async } from "@firebase/util";
@@ -7,6 +14,8 @@ import { async } from "@firebase/util";
 const auth = getAuth(app);
 
 const db = getFirestore(app);
+
+
 
 
 
@@ -20,7 +29,7 @@ export default function Employee (){
     const [filterByDepartmentkeyword,setFilterByDepartmentkeyword] = useState('all')
     const [searchByNameandId,setsearchByNameandId] = useState("")
     const [searchSuccess,setSearchSuccess] = useState(true);
-    const [viewValue,setViewValue] = useState('')
+    const [viewValue,setViewValue] = useState(0)
 
     const fetchEmployeesDocument = async () => {
 
@@ -45,7 +54,11 @@ export default function Employee (){
 
     useEffect(() => {
 
-        console.log(viewValue);
+        if(viewValue !== 0){
+
+           
+
+        }
 
     },[viewValue])
 
@@ -143,6 +156,72 @@ export default function Employee (){
         
     },[]);
 
+    function ViewEmployeeInfoModal (){
+
+
+        return (
+    
+            <>
+            
+                    <Modal
+                         show={viewValue === 0 ? false : true}
+            
+                         backdrop="static"
+                         keyboard={false}
+
+                     >
+                        
+                         <Modal.Body className='text-center rounded-1 border-0'  >
+                            
+                            <Container >
+                                
+                                <Row>
+
+                                    <Col lg={12} sm={12}>
+                                        <Card style={{ width: '18rem' }} className="m-auto mt-5">
+                                            <Card.Img variant="top" src="../src/assets/Gallery-icon.png" className="w-50 m-auto mt-5" />
+                                            <Card.Body>
+                                               
+                                                <Card.Text>
+                                                    <p>ID: {viewValue}</p>
+                                                </Card.Text>
+                                                <Card.Title>Lyndon Cuartero</Card.Title>
+                                            </Card.Body>
+                                        </Card>
+                                    </Col>
+                                    <Col lg={12} sm={12}>
+                                        <Card style={{ width: '18rem' }} className="m-auto mt-5">
+                                            <Card.Img variant="top" src="../src/assets/Gallery-icon.png" className="w-50 m-auto mt-5" />
+                                            <Card.Body>
+                                               
+                                                <Card.Text>
+                                                    <p>ID: {viewValue}</p>
+                                                </Card.Text>
+                                                <Card.Title>Lyndon Cuartero</Card.Title>
+                                            </Card.Body>
+                                        </Card>
+                                    </Col>
+                                </Row>
+
+                            </Container>
+                            
+                         </Modal.Body>
+                         <Modal.Footer className='border-0 rounded-1 p-4'>
+                            
+                            <Button variant="danger" className='rounded-1 m-auto w-25 border-0 mb-3' onClick={ () => {setViewValue(0)}}>
+                                Close
+                            </Button>
+                           
+                         </Modal.Footer>
+                     </Modal>
+         
+    
+            </>
+    
+        );
+    
+    }
+
 
 
     return (
@@ -150,6 +229,9 @@ export default function Employee (){
         
         
         <>
+
+
+            <ViewEmployeeInfoModal></ViewEmployeeInfoModal>
 
                 <div className="container mt-5">
                     <div className="row" style={{marginBottom: 80 + "px"}}>
@@ -177,14 +259,15 @@ export default function Employee (){
                     <div className="row mt-5">
 
                         <div className="col-lg-12 col-sm-12 float-start">
-                                <button className="btn btn-primary border-0 rounded-1 mb-4 m-1" style={{fontSize: 16 + "px"}}><i className="fa-solid fa-plus"></i> Add new employee</button>
+                                <Link to="/dashboard/employeeinterface" className="btn btn-primary border-0 rounded-1 mb-4 m-1" style={{fontSize: 16 + "px"}}><i className="fa-solid fa-plus"></i> Add new employee</Link>
                                 <button className="btn btn-success border-0 rounded-1 mb-4 m-1" style={{fontSize: 16 + "px"}}><i className="fa-solid fa-file-csv"></i> Add using spreadsheet</button>
                                 <div className="float-end">
                                     <select className="form-select mb-4 rounded-1" aria-label="Default select example" onChange={(e) => {setFilterByDepartmentkeyword(e.target.value)  }}>
                                                 <option defaultValue value="all">Select Department</option>
                                                 <option value="all" >All</option>
                                                 <option value="Accounting">Accounting</option>
-                                                <option value="production">Production</option>
+                                                <option value="Production">Production</option>
+                                                <option value="Marketing">Marketing</option>
                                     </select>
                                 </div>
                         </div>
@@ -202,8 +285,9 @@ export default function Employee (){
                                         <th scope="col">ID #</th>
                                         <th scope="col">Full Name</th>
                                         <th scope="col">Email Address</th>
-                                        <th scope="col">Department</th>
                                         <th scope="col">Designation</th>
+                                        <th scope="col">Department</th>
+                                      
                                         <th scope="col">Action</th>
                                         
 

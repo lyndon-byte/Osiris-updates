@@ -43,25 +43,25 @@ function Sidebar(){
                   
                     <div className="row">
                         <div className="col">
-                            <Link to="dashboard/reporting" className={ activesidebarbtn === "dashboardbtn" ? ' btn btn-outline-primary border-0 rounded-1 w-100 text-start active' : ' btn btn-outline-primary border-0 rounded-1 w-100 text-start'} onClick={ () => { setactivesidebarbtn("dashboardbtn") }}><span className="material-symbols-outlined material-icons">speed</span>&nbsp; <span className="sidebarbtntext">Dashboard</span></Link>
+                            <Link to="./reporting" className={ activesidebarbtn === "dashboardbtn" ? ' btn btn-outline-primary border-0 rounded-1 w-100 text-start active' : ' btn btn-outline-primary border-0 rounded-1 w-100 text-start'} onClick={ () => { setactivesidebarbtn("dashboardbtn") }}><span className="material-symbols-outlined material-icons">speed</span>&nbsp; <span className="sidebarbtntext">Dashboard</span></Link>
                         </div>
                         <div className="col">
-                            <Link to="dashboard/employees" className={ activesidebarbtn === "employeesbtn" ? "btn btn-outline-primary border-0 rounded-1 mt-2 w-100 text-start active " : "btn btn-outline-primary border-0 rounded-1 mt-2 w-100 text-start"} onClick={ () => { setactivesidebarbtn("employeesbtn")}}><span className="material-symbols-outlined material-icons">group</span>&nbsp; <span className="sidebarbtntext">Employees</span></Link>
+                            <Link to="./employees" className={ activesidebarbtn === "employeesbtn" ? "btn btn-outline-primary border-0 rounded-1 mt-2 w-100 text-start active " : "btn btn-outline-primary border-0 rounded-1 mt-2 w-100 text-start"} onClick={ () => { setactivesidebarbtn("employeesbtn")}}><span className="material-symbols-outlined material-icons">group</span>&nbsp; <span className="sidebarbtntext">Employees</span></Link>
                         </div>
                         <div className="col-12">
-                            <Link to="dashboard/payroll" className={ activesidebarbtn === "payrollbtn" ? "btn btn-outline-primary border-0 rounded-1 mt-2 w-100 text-start active" : "btn btn-outline-primary border-0 rounded-1 mt-2 w-100 text-start"} onClick={ () => {setactivesidebarbtn('payrollbtn')}} ><span className="material-symbols-outlined material-icons">payments</span>&nbsp; <span className="sidebarbtntext">Payroll</span></Link>
+                            <Link to="./payroll" className={ activesidebarbtn === "payrollbtn" ? "btn btn-outline-primary border-0 rounded-1 mt-2 w-100 text-start active" : "btn btn-outline-primary border-0 rounded-1 mt-2 w-100 text-start"} onClick={ () => {setactivesidebarbtn('payrollbtn')}} ><span className="material-symbols-outlined material-icons">payments</span>&nbsp; <span className="sidebarbtntext">Payroll</span></Link>
                         </div>
                         <div className="col-12">
-                            <Link to="dashboard/benefits" className={activesidebarbtn ==="benefitsbtn" ? "btn btn-outline-primary border-0 rounded-1 mt-2 w-100 text-start active" : "btn btn-outline-primary border-0 rounded-1 mt-2 w-100 text-start"} onClick={ () => {setactivesidebarbtn("benefitsbtn")}}><span className="material-symbols-outlined material-icons">volunteer_activism</span>&nbsp; <span className="sidebarbtntext">Benefits</span></Link>
+                            <Link to="./benefits" className={activesidebarbtn ==="benefitsbtn" ? "btn btn-outline-primary border-0 rounded-1 mt-2 w-100 text-start active" : "btn btn-outline-primary border-0 rounded-1 mt-2 w-100 text-start"} onClick={ () => {setactivesidebarbtn("benefitsbtn")}}><span className="material-symbols-outlined material-icons">volunteer_activism</span>&nbsp; <span className="sidebarbtntext">Benefits</span></Link>
                         </div>
                         <div className="col-12">
-                            <Link to="dashboard/attendance" className={activesidebarbtn ==="attendancebtn" ? "btn btn-outline-primary border-0 rounded-1 mt-2 w-100 text-start active" : "btn btn-outline-primary border-0 rounded-1 mt-2 w-100 text-start"} onClick={ () => {setactivesidebarbtn("attendancebtn")}}><span className="material-symbols-outlined material-icons">event_available</span>&nbsp; <span className="sidebarbtntext">Attendance</span></Link>
+                            <Link to="./attendance" className={activesidebarbtn ==="attendancebtn" ? "btn btn-outline-primary border-0 rounded-1 mt-2 w-100 text-start active" : "btn btn-outline-primary border-0 rounded-1 mt-2 w-100 text-start"} onClick={ () => {setactivesidebarbtn("attendancebtn")}}><span className="material-symbols-outlined material-icons">event_available</span>&nbsp; <span className="sidebarbtntext">Attendance</span></Link>
                         </div>
                         <div className="col-12">
-                            <Link to="dashboard/performance" className={activesidebarbtn ==="performancebtn" ? "btn btn-outline-primary border-0 rounded-1 mt-2 w-100 text-start active" : "btn btn-outline-primary border-0 rounded-1 mt-2 w-100 text-start"} onClick={ () => {setactivesidebarbtn("performancebtn")}}><span className="material-symbols-outlined material-icons">psychology</span>&nbsp; <span className="sidebarbtntext">Performance</span></Link>
+                            <Link to="./performance" className={activesidebarbtn ==="performancebtn" ? "btn btn-outline-primary border-0 rounded-1 mt-2 w-100 text-start active" : "btn btn-outline-primary border-0 rounded-1 mt-2 w-100 text-start"} onClick={ () => {setactivesidebarbtn("performancebtn")}}><span className="material-symbols-outlined material-icons">psychology</span>&nbsp; <span className="sidebarbtntext">Performance</span></Link>
                         </div>
                         <div className="col-12">
-                            <Link to="dashboard/training" className={activesidebarbtn ==="trainingbtn" ? "btn btn-outline-primary border-0 rounded-1 mt-2 w-100 text-start active" : "btn btn-outline-primary border-0 rounded-1 mt-2 w-100 text-start"} onClick={ () => {setactivesidebarbtn("trainingbtn")}}><span className="material-symbols-outlined material-icons">model_training</span>&nbsp; <span className="sidebarbtntext">Training</span></Link>
+                            <Link to="./training" className={activesidebarbtn ==="trainingbtn" ? "btn btn-outline-primary border-0 rounded-1 mt-2 w-100 text-start active" : "btn btn-outline-primary border-0 rounded-1 mt-2 w-100 text-start"} onClick={ () => {setactivesidebarbtn("trainingbtn")}}><span className="material-symbols-outlined material-icons">model_training</span>&nbsp; <span className="sidebarbtntext">Training</span></Link>
                         </div>
                         <div className="col-12">
                             <button className=" btn btn-outline-primary border-0 rounded-1  mt-2 w-100 text-start"><span className="material-symbols-outlined material-icons">widgets</span>&nbsp; <span className="sidebarbtntext">Time In App</span></button>
@@ -95,50 +95,50 @@ function AdminInterface (){
                 <Routes>
                     <Route
 
-                        path="dashboard/reporting"
+                        path="/reporting"
                         element={ <Reporting/> }
 
                     />      
                     <Route
 
-                        path="dashboard/employees"
+                        path="/employees"
                         element={ <Employees/> }
 
                     />
                     <Route
 
-                        path="dashboard/payroll"
+                        path="/payroll"
                         element={ <Payroll/> }
 
                     />
                     <Route
 
-                        path="dashboard/benefits"
+                        path="/benefits"
                         element={ <Benefits/> }
 
                     />
                      <Route
 
-                        path="dashboard/Attendance"
+                        path="/Attendance"
                         element={ <Attendance/> }
 
                     />
                    <Route
 
-                        path="dashboard/performance"
+                        path="/performance"
                         element={ <Performance/> }
 
                     />
                      <Route
 
-                        path="dashboard/training"
+                        path="/training"
                         element={ <Training/> }
 
                     />
 
                     <Route
 
-                        path="dashboard/employeeinterface"
+                        path="/employeeinterface"
                         element={ <EmployeeInfoInterface/> }
 
                     />

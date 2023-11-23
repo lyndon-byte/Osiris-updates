@@ -92,17 +92,18 @@ function LoginForm(){
         
                      backdrop="static"
                      keyboard={false}
-                     
+                    
                  >
                     
                      <Modal.Body className='text-center rounded-1 border-0'  >
                         <p className='mt-5 text-danger'>Login Failed!</p>
                      </Modal.Body>
-                     <Modal.Footer className='border-0 rounded-1' >
-                     <Button variant="danger" className='rounded-1 m-auto w-25 border-0 mb-3' onClick={handleClose}>
-                         Try Again
-                     </Button>
-
+                     <Modal.Footer className='border-0 rounded-1 p-4'>
+                        
+                        <Button variant="danger" className='rounded-1 m-auto w-25 border-0 mb-3' onClick={handleClose}>
+                            Try Again
+                        </Button>
+                       
                      </Modal.Footer>
                  </Modal>
      
@@ -156,7 +157,7 @@ function LoginForm(){
                                                         .then((userCredential) => {
                                                             // Signed in 
                                                             const user = userCredential.user;
-                                                            navigate('/dashboard')
+                                                            navigate('/dashboard/reporting')
                                                         })
                                                         .catch((error) => {
                                                             
