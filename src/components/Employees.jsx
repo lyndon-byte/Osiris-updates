@@ -1,13 +1,20 @@
 import React, { useEffect, useState } from "react";
+import Accordion from 'react-bootstrap/Accordion';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Card from 'react-bootstrap/Card';
+import ListGroup from 'react-bootstrap/ListGroup';
 import Container from 'react-bootstrap/Container';
+import Alert from 'react-bootstrap/Alert';
+import Form from 'react-bootstrap/Form';
+import InputGroup from 'react-bootstrap/InputGroup';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import {app} from './firebaseconfig';
 import { Link } from 'react-router-dom';
 import {getFirestore, doc,getDoc,query,getDocs, collection, where, getCountFromServer,and} from 'firebase/firestore';
+import { getStorage, ref, getDownloadURL } from "firebase/storage";
+
 import {getAuth} from 'firebase/auth'
 import { async } from "@firebase/util";
 
@@ -15,7 +22,7 @@ const auth = getAuth(app);
 
 const db = getFirestore(app);
 
-
+const storage = getStorage(app);
 
 
 
@@ -29,7 +36,11 @@ export default function Employee (){
     const [filterByDepartmentkeyword,setFilterByDepartmentkeyword] = useState('all')
     const [searchByNameandId,setsearchByNameandId] = useState("")
     const [searchSuccess,setSearchSuccess] = useState(true);
-    const [viewValue,setViewValue] = useState(0)
+    const [viewValue,setViewValue] = useState(0);
+    const [employeeInfoForViewing,setEmployeeInfoForViewing] = useState([]);
+    const [employeePhoto,setEmployeePhoto] = useState('')
+    const [showModal,setShowModal] = useState(false);
+
 
     const fetchEmployeesDocument = async () => {
 
@@ -52,15 +63,39 @@ export default function Employee (){
 
     }
 
-    useEffect(() => {
+    useEffect(() =>{
 
         if(viewValue !== 0){
 
-           
+         
 
-        }
+            getDownloadURL(ref(storage, `${user.email}/${viewValue}`))
+                .then((url) => {
+                    
+                     setEmployeePhoto(url);
+
+                })
+                .catch((error) => {
+                    console.log(error)
+                });
+
+            async function getEmployeeInfoForViewing(){
+
+                const docRef = query(collection(db,"miniusers"),and(where("administrator", "==", user.email),where("employeenum", "==", viewValue)));
+                const docSnap = await getDocs(docRef);
+                const employeeinfolistforviewing = docSnap.docs.map((doc) => ({...doc.data(), id: doc.id}));
+                setEmployeeInfoForViewing(employeeinfolistforviewing);
+                setShowModal(true);
+            }
+
+            getEmployeeInfoForViewing()
+
+
+
+        }   
 
     },[viewValue])
+   
 
     useEffect(() => {
 
@@ -148,6 +183,15 @@ export default function Employee (){
     },[filterByDepartmentkeyword]);
 
 
+
+    const handleCloseForEmployeeInfoModal = () => {
+
+        setShowModal(false);
+
+
+    }
+
+
     useEffect(() =>{
 
 
@@ -158,59 +202,271 @@ export default function Employee (){
 
     function ViewEmployeeInfoModal (){
 
+        const [startOfShiftTimeHours,setStartOfShiftTimeHours] = useState(0);
+        const [startOfShiftTimeMins,setStartOfShiftTimeMins] = useState(0);
+        const [hourForEndOfShift,setHourForEndOfShift] = useState(0)
+        const [timePeriodForEndofShift,setTimePeriodForEndofShift] = useState();
+
+
+        const handleSetStartShiftTime = (e) => {
+
+               let [hours, mins] = e.target.value.split(':');
+               
+               console.log(hours);
+               console.log(mins);
+
+        }
+
 
         return (
     
             <>
             
                     <Modal
-                         show={viewValue === 0 ? false : true}
+                         show={showModal}
             
                          backdrop="static"
                          keyboard={false}
-
+                         fullscreen={true}
+                         
                      >
-                        
+                         <Modal.Header closeButton onClick={handleCloseForEmployeeInfoModal}>
+                            
+                                <Modal.Title id="example-modal-sizes-title-sm" style={{fontSize: 17 + "px"}}>
+                                <i className="fa-regular fa-user"></i> &nbsp; Employee Info
+                                </Modal.Title>
+                                
+                         </Modal.Header>
                          <Modal.Body className='text-center rounded-1 border-0'  >
                             
                             <Container >
                                 
                                 <Row>
 
-                                    <Col lg={12} sm={12}>
-                                        <Card style={{ width: '18rem' }} className="m-auto mt-5">
-                                            <Card.Img variant="top" src="../src/assets/Gallery-icon.png" className="w-50 m-auto mt-5" />
-                                            <Card.Body>
+                                    <Col lg={4} sm={12}>
+                                        <Card style={{ width: '18rem' }} className="m-auto mt-5" data-bs-theme="dark">
+                                            <Card.Img variant="top" src={employeePhoto} className="w-50 m-auto mt-5" />
+                                            <Card.Body style={{marginBottom: 20 + "px"}}>
                                                
-                                                <Card.Text>
-                                                    <p>ID: {viewValue}</p>
-                                                </Card.Text>
-                                                <Card.Title>Lyndon Cuartero</Card.Title>
+                                                
+                                                    
+
+                                                    {
+
+
+
+                                                        employeeInfoForViewing.map((info,i) =>(
+                                                            <>
+                                                                <p className="mt-5">ID: {info.employeenum}</p>
+                                                                <Card.Title>{info.fullname}</Card.Title>
+                                                                <p className="mt-4" style={{fontSize: 35 + "px"}}><i className="fa-solid fa-barcode"></i><i className="fa-solid fa-barcode"></i><i className="fa-solid fa-barcode"></i><i className="fa-solid fa-barcode"></i></p>
+                                                            </>
+                                                           
+                                                             
+
+                                                        ))
+
+
+                                                    }
+                                                
+                                                
                                             </Card.Body>
                                         </Card>
                                     </Col>
-                                    <Col lg={12} sm={12}>
-                                        <Card style={{ width: '18rem' }} className="m-auto mt-5">
-                                            <Card.Img variant="top" src="../src/assets/Gallery-icon.png" className="w-50 m-auto mt-5" />
-                                            <Card.Body>
-                                               
-                                                <Card.Text>
-                                                    <p>ID: {viewValue}</p>
-                                                </Card.Text>
-                                                <Card.Title>Lyndon Cuartero</Card.Title>
-                                            </Card.Body>
-                                        </Card>
+                                    <Col lg={8} sm={12}>
+
+                                                
+                                            {
+
+
+
+                                                employeeInfoForViewing.map((info,i) =>(
+                                                    <>
+                                                        <Row style={{marginTop: 90 + "px"}}>
+
+                                                            <Col lg={6} sm={12} className="text-start">
+
+                                                                <p className="fw-bold">Gender: &nbsp; <span className="fw-medium text-muted">{info.gender}</span></p>
+                                                                <p className="fw-bold">Birthdate: &nbsp; <span className="fw-medium text-muted">{info.birthdate}</span></p>
+                                                                <p className="fw-bold">Address: &nbsp; <span className="fw-medium text-muted">{info.address}</span></p>
+                                                                <p className="fw-bold">Contact Number: &nbsp; <span className="fw-medium text-muted">{info.contactnumber}</span></p>
+                                                                <p className="fw-bold">Email Address: &nbsp; <span className="fw-medium text-muted">{info.email}</span></p>
+                                                                
+                                                            </Col>
+                                                            
+                                                            <Col lg={6} sm={12} className="text-start">
+
+                                                                <p className="fw-bold">Salary Rate: &nbsp; <span className="fw-medium text-muted">₱{info.salaryrate}</span></p>
+                                                                <p className="fw-bold">Start Date: &nbsp; <span className="fw-medium text-muted">{info.startdate}</span></p>
+                                                                <p className="fw-bold">Department: &nbsp; <span className="fw-medium text-muted">{info.department}</span></p>
+                                                                <p className="fw-bold">Designation: &nbsp; <span className="fw-medium text-muted">{info.designation}</span></p>
+                                                               
+                                                               
+                                                                
+                                                            </Col>
+                                                              
+                                                            <Col lg={6} sm={12}>
+                                                               
+                                                                <Accordion className="mt-4">
+                                                                    <Accordion.Item eventKey="0">
+                                                                        <Accordion.Header>Government Benefits ID numbers</Accordion.Header>
+                                                                        <Accordion.Body>
+                                                                            <ListGroup className="text-start ">
+
+                                                            
+
+                                                                                <ListGroup.Item className="border-0 fw-bold">SSS: <span className="fw-medium text-muted">{info.sssid}</span>   
+                                                                                </ListGroup.Item>
+                                                                                <ListGroup.Item className="border-0 fw-bold">PAG-IBIG: <span className="fw-medium text-muted">{info.pagibigid}</span>   
+                                                                                </ListGroup.Item>
+                                                                                <ListGroup.Item className="border-0 fw-bold">Philhealth: <span className="fw-medium text-muted">{info.philhealthid}</span>   
+                                                                                </ListGroup.Item>
+                                                                                <ListGroup.Item className="border-0 fw-bold">TIN: <span className="fw-medium text-muted">{info.tinid}</span>   
+                                                                                </ListGroup.Item>
+                                                                              
+                                                                            </ListGroup>
+                                                                        </Accordion.Body>
+                                                                    </Accordion.Item>
+                                                                    
+                                                                </Accordion>
+                                                            </Col>
+
+                                                            
+
+                                                        </Row>
+                                                    </>
+                                                
+                                                    
+
+                                                ))
+
+
+                                            }
+                                        
+                                        <Col lg={12} sm={12}>
+
+                                              <p className="text-muted text-start mt-5 fw-bold">Work Schedule<span className="text-muted fw-medium">: Not set</span></p>
+
+                                        </Col>
+                                
+                                       
                                     </Col>
                                 </Row>
+                                <Row style={{marginTop: 100 + "px", marginBottom: 200 + "px"}} className="">
+                                    
+                                        
+                                        
+                                        <Col lg={8} sm={12} className="m-auto border rounded-2 p-5">
 
+                                            <Col lg={12}> 
+                                                    <h5 className="text-muted mb-5 mt-4">Set or change schedule</h5>
+                                            </Col>
+                                                
+                                                <Row>
+
+                                                        <Col lg={4} sm={12} className="text-start m-auto rounded-1 mt-5">
+                                                                
+                                                            
+                                                            <Form.Label htmlFor="basic-url">Rest Day</Form.Label>
+                                                            <Form.Select aria-label="Default select example">
+                                                                        <option>select</option>
+                                                                        <option value="1">Mon-Tue</option>
+                                                                        <option value="2">Tue-Wed</option>
+                                                                        <option value="2">Wed-Thu</option>
+                                                                        <option value="3">Thu-Fri</option>
+                                                                        <option value="3">Fri-Sat</option>
+                                                                        <option value="3">Sat-Sun</option>
+                                                                        <option value="3">Sun-Mon</option>
+                                                            </Form.Select>
+                                                            
+                                                            
+                                                        </Col>
+                                                        <Col lg={4} sm={12} className="text-start m-auto rounded-1 mt-5">
+                                                            
+                                                        
+                                                            <Form.Label htmlFor="basic-url">Start of shift time</Form.Label>
+                                                            <InputGroup className="mb-3">
+                                                            
+                                                                <Form.Control id="basic-url" aria-describedby="basic-addon3" type="time" onChange={handleSetStartShiftTime} />
+                                                            </InputGroup>
+
+                                                        
+                                                        
+                                                        </Col>
+                                                        <Col lg={4} sm={12} className="text-start m-auto rounded-1 mt-5">
+                                                            
+                                                            
+                                                            <Form.Label htmlFor="basic-url">End of shift time</Form.Label>
+                                                            <InputGroup className="mb-3" >
+                                                                
+                                                                <Form.Control id="basic-url" aria-describedby="basic-addon3" disabled />
+
+                                                            </InputGroup>
+
+                                                        
+                                                        
+                                                        </Col>
+                                                        <Col lg={4} sm={12} className="text-start m-auto rounded-1 mt-5">
+                                                            
+                                                            
+                                                            <Form.Label htmlFor="basic-url">First 15 minutes break</Form.Label>
+                                                            <InputGroup className="mb-3" >
+                                                                
+                                                                <Form.Control id="basic-url" aria-describedby="basic-addon3" disabled />
+
+                                                            </InputGroup>
+
+                                                        
+                                                        
+                                                        </Col>
+                                                        <Col lg={4} sm={12} className="text-start m-auto rounded-1 mt-5">
+                                                            
+                                                            
+                                                            <Form.Label htmlFor="basic-url">Lunch Break</Form.Label>
+                                                            <InputGroup className="mb-3" >
+                                                                
+                                                                <Form.Control id="basic-url" aria-describedby="basic-addon3" disabled />
+
+                                                            </InputGroup>
+
+                                                        
+                                                        
+                                                        </Col>
+                                                        <Col lg={4} sm={12} className="text-start m-auto rounded-1 mt-5">
+                                                            
+                                                            
+                                                            <Form.Label htmlFor="basic-url">Last 15 minutes break</Form.Label>
+                                                            <InputGroup className="mb-3" >
+                                                                
+                                                                <Form.Control id="basic-url" aria-describedby="basic-addon3" disabled />
+
+                                                            </InputGroup>
+
+                                                        
+                                                        
+                                                        </Col>
+                                                        <Col lg={12} sm={12} className="text-start m-auto rounded-1 mt-5">
+                                                
+                                                
+                                                                <Button variant="primary" className="float-end border-0 rounded-1">Submit</Button>
+                                                        
+                                                        
+                                                        </Col>
+
+                                            </Row>
+                                        
+                                        </Col>
+                                       
+                                </Row>
                             </Container>
                             
                          </Modal.Body>
+
                          <Modal.Footer className='border-0 rounded-1 p-4'>
-                            
-                            <Button variant="danger" className='rounded-1 m-auto w-25 border-0 mb-3' onClick={ () => {setViewValue(0)}}>
-                                Close
-                            </Button>
+                      
+                      
+                                 Osiris HRIS-Payroll Web Application V1.1
+      
                            
                          </Modal.Footer>
                      </Modal>
