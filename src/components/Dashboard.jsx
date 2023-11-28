@@ -59,7 +59,7 @@ function PostRegistration(props){
             if (docSnap.exists()) {
 
                 setpostregdone(true);
-                
+                    
 
             } else {
 
@@ -101,7 +101,7 @@ function PostRegistration(props){
                                 <div className="col-lg-4 col-sm-12">
                                         <div className="card border-0 bg-light m-auto" style={{width: 21 + "rem"}}>
                                             <div className="card-body">
-                                                <img src="./src/assets/postreg.png" width="100%"/>
+                                                <img src="https://img.freepik.com/free-vector/recruiting-professionals-studying-candidate-profiles_1262-21404.jpg" width="100%"/>
                                             </div>      
                                         </div>
                                 </div>
@@ -143,7 +143,7 @@ function PostRegistration(props){
     
                                                     });
                                                     console.log("data was added");
-                                                     return checkPersonalInfo();
+                                                    return checkPersonalInfo();
     
                                                 } catch (e) {
                                                     console.error("Error adding document: ", e);

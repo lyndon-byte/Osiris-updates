@@ -15,7 +15,7 @@ const auth = getAuth(app);
 
 const actionCodeSettings = {
 
-    url: 'https://osiris-44544.firebaseapp.com'
+    url: 'https://osiris-3670f.firebaseapp.com'
 
     
   };

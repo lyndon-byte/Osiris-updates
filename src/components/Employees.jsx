@@ -202,18 +202,19 @@ export default function Employee (){
 
     function ViewEmployeeInfoModal (){
 
-        const [startOfShiftTimeHours,setStartOfShiftTimeHours] = useState(0);
+       
         const [startOfShiftTimeMins,setStartOfShiftTimeMins] = useState(0);
         const [hourForEndOfShift,setHourForEndOfShift] = useState(0)
-        const [timePeriodForEndofShift,setTimePeriodForEndofShift] = useState();
+        const [timePeriodForEndofShift,setTimePeriodForEndofShift] = useState('');
 
 
         const handleSetStartShiftTime = (e) => {
 
                let [hours, mins] = e.target.value.split(':');
-               
-               console.log(hours);
-               console.log(mins);
+
+              
+
+              
 
         }
 
@@ -305,7 +306,7 @@ export default function Employee (){
                                                                 
                                                             </Col>
                                                               
-                                                            <Col lg={6} sm={12}>
+                                                            <Col lg={5} sm={12}>
                                                                
                                                                 <Accordion className="mt-4">
                                                                     <Accordion.Item eventKey="0">
@@ -399,7 +400,7 @@ export default function Employee (){
                                                             <Form.Label htmlFor="basic-url">End of shift time</Form.Label>
                                                             <InputGroup className="mb-3" >
                                                                 
-                                                                <Form.Control id="basic-url" aria-describedby="basic-addon3" disabled />
+                                                                <Form.Control id="basic-url" aria-describedby="basic-addon3" disabled  />
 
                                                             </InputGroup>
 

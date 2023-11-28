@@ -125,6 +125,7 @@ function EmployeeInfoInterface(){
                     
                      <Modal.Body className='text-center rounded-1 border-0'  >
                         <p className='mt-5 text-muted'>Employee was added successfully!</p>
+                        <p>Go back to employees information page to view the newly added employee or add other employee again</p>
                      </Modal.Body>
                      <Modal.Footer className='border-0 rounded-1' >
                      <Button variant="primary" className='rounded-1 m-auto w-25 border-0 mb-3' onClick={addemployeeagain}>
