@@ -6,6 +6,7 @@ import Attendance from './Attendance';
 import Performance from './Performance';
 import Training from './Training';
 import Reporting from "./Reporting";
+import TimeInApp from "./TimeIn";
 import EmployeeInfoInterface from "./EmployeeInfoInterface";
 import Error404 from './404'
 import {useState} from 'react';
@@ -64,7 +65,7 @@ function Sidebar(){
                             <Link to="./training" className={activesidebarbtn ==="trainingbtn" ? "btn btn-outline-primary border-0 rounded-1 mt-2 w-100 text-start active" : "btn btn-outline-primary border-0 rounded-1 mt-2 w-100 text-start"} onClick={ () => {setactivesidebarbtn("trainingbtn")}}><span className="material-symbols-outlined material-icons">model_training</span>&nbsp; <span className="sidebarbtntext">Training</span></Link>
                         </div>
                         <div className="col-12">
-                            <button className=" btn btn-outline-primary border-0 rounded-1  mt-2 w-100 text-start"><span className="material-symbols-outlined material-icons">widgets</span>&nbsp; <span className="sidebarbtntext">Time In App</span></button>
+                            <Link to="../timein" target='_blank' className=" btn btn-outline-primary border-0 rounded-1  mt-2 w-100 text-start"><span className="material-symbols-outlined material-icons">widgets</span>&nbsp; <span className="sidebarbtntext">Time In App</span></Link>
                         </div>
                         
                     </div>
@@ -142,6 +143,8 @@ function AdminInterface (){
                         element={ <EmployeeInfoInterface/> }
 
                     />
+
+                   
 
                     <Route
 

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { getAuth , onAuthStateChanged } from "firebase/auth";
 import { doc, getDoc , getFirestore , query , where , and,collection , getCountFromServer} from "firebase/firestore";
+import holidays from 'date-holidays';
 import ProductivityandQualityReport from './ProductivityandQualityReport';
 import {Link} from 'react-router-dom';
 import '../dashboard.css'
@@ -17,6 +18,10 @@ const db =  getFirestore(app);
 
 export default function Reporting (){
 
+    const hd = new holidays('PH');
+    const holiday = hd.getHolidays();
+   
+
     const [currentUser,setCurrentUser] = useState(auth.currentUser)
     const [datetime,setDateTime] = useState(new Date().toLocaleTimeString());
     const [adminInfo,setAdminInfo] = useState([])
@@ -24,7 +29,11 @@ export default function Reporting (){
 
     const [day,setDay] = useState(['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'])
 
-    
+    useEffect(() => {
+
+        console.log(holiday);
+
+    },[])
 
     useEffect(() => {
 
@@ -203,7 +212,7 @@ export default function Reporting (){
                                     
                                         <div className="row">
                                             <div className="col-lg-6 col-sm-12 mt-2">
-                                               <h5 className="text-success">₱ 1,525,000</h5>
+                                               <h5 className="text-success ">₱ 1,525,000</h5>
                                             </div>
                                             <div className="col-lg-6 col-sm-12">
                                                 <button className="btn btn-primary rounded-1 border-0 float-end">View</button>
@@ -239,17 +248,17 @@ export default function Reporting (){
                                    Productivity and Quality Performance
                                 </div>
                                 <div className="card-body">
-                                    <div className="row mt-4">
-                                        <div className="col-6">
-                                            <div className="alert text-center" role="alert" style={{backgroundColor: "rgba(194, 116, 161, 0.5)"}}>
-                                                Productivity
+                                    <div className="row mt-3">
+                                             <div className="col-6">
+                                                    <div className="alert text-center text-white" role="alert" style={{backgroundColor: "#0d6efd"}}>
+                                                            Productivity
+                                                    </div>
                                             </div>
-                                        </div>
-                                        <div className="col-6">
-                                            <div class="alert text-center" role="alert" style={{backgroundColor: "rgba(71, 225, 167, 0.5)"}}>
-                                                Quality
+                                            <div className="col-6">
+                                                    <div class="alert text-center text-white" role="alert" style={{backgroundColor: "#198754"}}>
+                                                            Quality
+                                                    </div>
                                             </div>
-                                        </div>
                                     </div>
                                     
                                     <div className="col mb-5">
@@ -269,20 +278,9 @@ export default function Reporting (){
                                     <p className="mt-3 text-muted">as of today {new Date().toLocaleDateString()}</p>
                                 </div>
                             </div>
-                            <div className="card border-0 rounded-1 mt-4">
-                                <div className="card-header bg-info text-dark">
-                                    Calendar
-                                </div>
-                                <div className="card-body">
-                                    <h5 className="card-title">Special title treatment</h5>
-                                    <p className="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                    <a href="#" className="btn btn-primary">Go somewhere</a>
-                                </div>
-                            </div>
-                        </div>
+                           
 
-                        <div className="col-lg-8 col-sm-12 mt-5 m-auto">
-                            <div className="card border-0 rounded-1">
+                            <div className="card border-0 rounded-1 mt-4">
                                 <div className="card-header bg-secondary text-white">
                                     Buisness Headlines
                                 </div>
@@ -297,6 +295,72 @@ export default function Reporting (){
                                         </div>
                                     </div>
                                     
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="col-lg-12 col-sm-12 mt-5">
+                        <div className="card border-0 rounded-1 mt-4">
+                                <div className="card-header bg-success text-white">
+                                    Holidays for this month
+                                </div>
+                                <div className="card-body">
+
+                                        <div className="row">
+                                            <div className="col-lg-4 col-sm-12">
+                                                <div class="card text-center border-0">
+                                                    <div class="card-header border-0 bg-danger text-white">
+                                                        
+                                                        Dec 8, 2023
+
+                                                    </div>
+                                                    <div class="card-body bg-light ">
+                                                       
+                                                        <p class="card-text"> Feast of the Immaculate Conception</p>
+                                                        
+                                                    </div>
+                                                    <div class="card-footer text-body-secondary">
+                                                        4 days to go
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div className="col-lg-4 col-sm-12">
+                                                <div class="card text-center border-0">
+                                                        <div class="card-header border-0 bg-danger text-white">
+                                                            
+                                                            Dec 25, 2023
+
+                                                        </div>
+                                                        <div class="card-body bg-light ">
+                                                        
+                                                            <p class="card-text"> Christmas Day</p>
+                                                            
+                                                        </div>
+                                                        <div class="card-footer text-body-secondary">
+                                                            21 days to go
+                                                        </div>
+                                                    </div>
+                                            </div>
+                                            <div className="col-lg-4 col-sm-12">
+                                                <div class="card text-center border-0">
+                                                    <div class="card-header border-0 bg-danger text-white">
+                                                        
+                                                        Dec 30, 2023
+
+                                                    </div>
+                                                    <div class="card-body bg-light ">
+                                                       
+                                                        <p class="card-text"> Rizal Day</p>
+                                                        
+                                                    </div>
+                                                    <div class="card-footer text-body-danger">
+                                                        26 days to go
+                                                    </div>
+                                                </div>
+                                            </div>
+                                           
+                                        </div>
+                                   
                                 </div>
                             </div>
                         </div>

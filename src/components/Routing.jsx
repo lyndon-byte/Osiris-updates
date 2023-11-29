@@ -22,6 +22,7 @@ import {app} from './firebaseconfig';
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import CheckingPermission from './CheckingPermmission.jsx';
 import VerifiedEmail from './VerifiedEmail.jsx';
+import TimeInApp from './TimeIn.jsx';
 
 
 const auth = getAuth(app);
@@ -91,6 +92,13 @@ function Routing (){
 
                             path="/dashboard/*"
                             element={ authenticated ? <Dashboard/> : <CheckingPermission/>}
+                        />
+
+                        <Route
+
+                            path="/timein"
+                            element={ <TimeInApp/> }
+
                         />
 
                             <Route

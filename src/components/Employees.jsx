@@ -88,6 +88,7 @@ export default function Employee (){
                 setShowModal(true);
             }
 
+
             getEmployeeInfoForViewing()
 
 
@@ -187,7 +188,7 @@ export default function Employee (){
     const handleCloseForEmployeeInfoModal = () => {
 
         setShowModal(false);
-
+        setViewValue(0);
 
     }
 
@@ -312,15 +313,15 @@ export default function Employee (){
                                                                     <Accordion.Item eventKey="0">
                                                                         <Accordion.Header>Government Benefits ID numbers</Accordion.Header>
                                                                         <Accordion.Body>
-                                                                            <ListGroup className="text-start ">
+                                                                            <ListGroup className="text-start">
 
                                                             
 
-                                                                                <ListGroup.Item className="border-0 fw-bold">SSS: <span className="fw-medium text-muted">{info.sssid}</span>   
+                                                                                <ListGroup.Item  className="border-0 fw-bold">SSS: <span className="fw-medium text-muted">{info.sssid}</span>   
                                                                                 </ListGroup.Item>
-                                                                                <ListGroup.Item className="border-0 fw-bold">PAG-IBIG: <span className="fw-medium text-muted">{info.pagibigid}</span>   
+                                                                                <ListGroup.Item  className="border-0 fw-bold">PAG-IBIG: <span className="fw-medium text-muted">{info.pagibigid}</span>   
                                                                                 </ListGroup.Item>
-                                                                                <ListGroup.Item className="border-0 fw-bold">Philhealth: <span className="fw-medium text-muted">{info.philhealthid}</span>   
+                                                                                <ListGroup.Item  className="border-0 fw-bold">Philhealth: <span className="fw-medium text-muted">{info.philhealthid}</span>   
                                                                                 </ListGroup.Item>
                                                                                 <ListGroup.Item className="border-0 fw-bold">TIN: <span className="fw-medium text-muted">{info.tinid}</span>   
                                                                                 </ListGroup.Item>

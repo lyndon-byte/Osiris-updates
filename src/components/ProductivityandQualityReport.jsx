@@ -15,14 +15,14 @@ const ProductivityandQualityReport = () => {
       datasets: [
         {
           label: 'My First dataset',
-          backgroundColor: 'rgba(194, 116, 161, 0.5)',
-          borderColor: 'rgb(194, 116, 161)',
+          backgroundColor: '#0d6efd',
+          borderColor: '#0d6efd',
           data: [65, 59, 90],
         },
         {
           label: 'My Second dataset',
-          backgroundColor: 'rgba(71, 225, 167, 0.5)',
-          borderColor: 'rgb(71, 225, 167)',
+          backgroundColor: '#198754',
+          borderColor: '#198754',
           data: [28, 48, 100],
         },
       ],
@@ -30,7 +30,7 @@ const ProductivityandQualityReport = () => {
   
     return (
       <CDBContainer>
-        <h3 className="mt-5">Bar chart</h3>
+        <h5 className="mt-5 mb-5">Performance of all Departments</h5>
         <Bar data={data} options={{ responsive: true }} />
       </CDBContainer>
     );
