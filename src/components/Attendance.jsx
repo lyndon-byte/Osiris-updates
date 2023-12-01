@@ -10,6 +10,7 @@ import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import AttendanceCalendar from "./AttendanceCalendar";
 import {app} from './firebaseconfig';
 import { Link } from 'react-router-dom';
 import {getFirestore, doc,getDoc,query,getDocs, collection, where, getCountFromServer,and} from 'firebase/firestore';
@@ -204,21 +205,7 @@ export default function Employee (){
     function ViewEmployeeInfoModal (){
 
        
-        const [startOfShiftTimeMins,setStartOfShiftTimeMins] = useState(0);
-        const [hourForEndOfShift,setHourForEndOfShift] = useState(0)
-        const [timePeriodForEndofShift,setTimePeriodForEndofShift] = useState('');
-
-
-        const handleSetStartShiftTime = (e) => {
-
-               let [hours, mins] = e.target.value.split(':');
-
-              
-
-              
-
-        }
-
+       
 
         return (
     
@@ -235,7 +222,7 @@ export default function Employee (){
                          <Modal.Header closeButton onClick={handleCloseForEmployeeInfoModal}>
                             
                                 <Modal.Title id="example-modal-sizes-title-sm" style={{fontSize: 17 + "px"}}>
-                                <i className="fa-regular fa-user"></i> &nbsp; Attendance Info
+                                <i className="fa-regular fa-user"></i> &nbsp; {viewValue}
                                 </Modal.Title>
                                 
                          </Modal.Header>
@@ -256,12 +243,12 @@ export default function Employee (){
                                           
                                         
                                     </Col>
-                                    <Col lg={8} sm={12}>
+                                    <Col lg={12} sm={12}>
 
                                                 
                                            
 
-                                            
+                                            <AttendanceCalendar></AttendanceCalendar>
                                         
                                         
                                        
@@ -312,7 +299,7 @@ export default function Employee (){
                             </div>
                             <div className="card-body p-5 text-center">
                                 
-                                <h1 className="mt-4"><i className="fa-solid fa-user text-success"></i> 0</h1>
+                                <h1 className="mt-4"><i className="fa-solid fa-user text-success"></i> 2</h1>
                                
                             </div>
                         </div>
@@ -324,7 +311,7 @@ export default function Employee (){
                             </div>
                             <div className="card-body p-5 text-center">
                                 
-                                <h1 className="mt-4"><i className="fa-solid fa-user text-success"></i> 0</h1>
+                                <h1 className="mt-4"><i className="fa-solid fa-user text-success"></i> 10</h1>
                                 
                             </div>
                         </div>  
@@ -366,7 +353,7 @@ export default function Employee (){
                                 <thead className="text-center" style={{position: "sticky"}}>
                                     <tr>
 
-                                        <th scope="col">ID #</th>
+                                        <th scope="col">ID#</th>
                                         <th scope="col">Full Name</th>
                                         <th scope="col">Email Address</th>
                                         <th scope="col">Designation</th>
