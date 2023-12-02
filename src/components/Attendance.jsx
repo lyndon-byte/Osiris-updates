@@ -299,7 +299,7 @@ export default function Employee (){
                             </div>
                             <div className="card-body p-5 text-center">
                                 
-                                <h1 className="mt-4"><i className="fa-solid fa-user text-success"></i> 2</h1>
+                                <h1 className="mt-4"><i className="fa-solid fa-user text-success"></i> {localStorage.getItem('absents')}</h1>
                                
                             </div>
                         </div>
@@ -316,18 +316,20 @@ export default function Employee (){
                             </div>
                         </div>  
                     </div>
-                    <div className="col-lg-4 col-sm-12 mt-5">
-                            <div className="alert alert-primary w-75" style={{fontSize: 15 + "px"}} role="alert">
-                                <i className="fa-solid fa-circle-info"></i> Search employee using their ID #
-                            </div>
-                            <form className="d-flex" role="search">
-                                <input className="form-control me-2 rounded-1 w-75" type="number" onChange={(e) => {setsearchByNameandId(e.target.value)} } placeholder="Search Employee" aria-label="Search"/>
-                                
-                                
-                                
-                            </form>
-                            <div className="form-text" id="basic-addon4">{ searchSuccess ? '' : 'No results found'}</div>
+                    <div className="col-lg-4 col-sm-12 mt-5 m-auto">
+                     
+                        <div className="alert alert-primary" style={{fontSize: 15 + "px"}} role="alert">
+                                    <i className="fa-solid fa-circle-info"></i> Search employee using their ID #
+                                </div>
+                                <form className="d-flex" role="search">
+                                    <input className="form-control me-2 rounded-1" type="number" onChange={(e) => {setsearchByNameandId(e.target.value)} } placeholder="Search Employee" aria-label="Search"/>
+                                    
+                                    
+                                    
+                                </form>
+                                <div className="form-text" id="basic-addon4">{ searchSuccess ? '' : 'No results found'}</div>
                         </div>
+                      
                     </div>
                     <div className="row">
 

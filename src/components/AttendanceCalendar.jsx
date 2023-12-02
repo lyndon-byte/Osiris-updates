@@ -112,11 +112,11 @@ function AttendanceCalendar(){
 
     const handleSelected = (event) => {
 
-
+        setShow(true)
         setSelectedEvent(event);
-       
         setSelectedDisputeDate(event);
         console.log(event)
+       
     };
 
     useEffect(()=>{
@@ -124,7 +124,7 @@ function AttendanceCalendar(){
         if(selectedDisputeDate.length !== 0){
 
             setSelectedDisputeDateValue(selectedDisputeDate.start.getMonth() + "/" + selectedDisputeDate.start.getDate() + "/" + selectedDisputeDate.start.getFullYear())
-            setShow(true)
+            
             
         }
 
@@ -138,7 +138,7 @@ function AttendanceCalendar(){
 
         if (index !== -1) {
             
-            if(selectedStatus === "Sick Leaved"){
+            if(selectedStatus === "Sick Leave"){
 
                 if(localStorage.getItem('sickleavebalance') != 0){
                     eventData[index].title = selectedStatus;
@@ -160,9 +160,50 @@ function AttendanceCalendar(){
 
                 }
 
-            }else{
+            }else if(selectedStatus === "Cancelled"){
 
-                eventData[index].title = selectedStatus;
+               
+                if(eventData[index].title == "Vacation Leave"){
+
+                    eventData[index].title = selectedStatus;
+                    localStorage.setItem("vacationleavebalance",parseInt(localStorage.getItem('vacationleavebalance')) + parseInt(1))
+
+                }else if(eventData[index].title == "Sick Leave"){
+
+                    eventData[index].title = selectedStatus;
+                    localStorage.setItem("sickleavebalance",parseInt(localStorage.getItem('sickleavebalance')) + parseInt(1))
+
+                }
+                
+            }else if(selectedStatus === "Paid Leave"){
+                
+                 
+                if(localStorage.getItem('vacationleavebalance') != 0){
+
+                    eventData[index].title = selectedStatus;
+                    localStorage.setItem("vacationleavebalance",parseInt(localStorage.getItem('vacationleavebalance')) - parseInt(1))
+
+                }else{
+
+                    alert('no available leave credits')
+                }
+                
+               
+            }
+            
+            else{
+
+                if(eventData[index].title == "Absent"){
+
+                    eventData[index].title = selectedStatus;
+                    localStorage.setItem("absents",parseInt(localStorage.getItem('absents')) - parseInt(1))
+
+                }else{
+
+                    eventData[index].title = selectedStatus;
+
+                }
+               
 
             }
 
@@ -172,9 +213,11 @@ function AttendanceCalendar(){
 
     }
 
+   let i = 1;
+
    const eventPropGetter = useCallback(
         (event) => ({
-         ...(event.title.includes('Present') &&
+        ...(event.title.includes('Present') &&
              
           {
              style: {
@@ -318,8 +361,11 @@ function AttendanceCalendar(){
     function AddDispute() {
         
       
-        const handleClose = () => setShow(false);
-       
+        const handleClose = () => {
+            
+            setShow(false);
+            
+        }
       
         return (
           <>
@@ -345,7 +391,7 @@ function AttendanceCalendar(){
                     <select class="form-select" aria-label="Default select example" value={selectedStatus} onChange={(e) => {setSelectedStatus(e.target.value)}}>
                             <option defaultValue>Open this select menu</option>
                             <option value="Present">Present</option>
-                            <option value="Sick Leaved">Sick Leave</option>
+                            <option value="Sick Leave">Sick Leave</option>
                             <option value="Absent">Absent</option>
                             <option value="Paid Leave">Paid Leave</option> 
                             <option value="Cancelled">Cancel</option> 
