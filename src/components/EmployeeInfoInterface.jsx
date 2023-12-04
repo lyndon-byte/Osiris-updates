@@ -312,7 +312,7 @@ function EmployeeInfoInterface(){
                                                 </div>
                                                 <div className="col-lg-4 col-sm-12">
                                                     <div className="card p-3 border-0 m-auto" style={{width: 18 + "rem"}}>
-                                                        <img src={getphoto === '' ? '/src/assets/Gallery-icon.png' :  getphotoforviewing} className="card-img-top m-auto w-75"  alt="..."/>
+                                                        <img src={getphoto === '' ? 'https://i.ibb.co/FsPzQpX/Gallery-icon.png' :  getphotoforviewing} className="card-img-top m-auto w-75"  alt="..."/>
                                                         <div className="card-body text-center">
                                                             
 
