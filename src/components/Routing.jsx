@@ -64,13 +64,13 @@ function Routing (){
 
                         
                         <Route
-                                path="https://osiris-mj0q6q9ct-lyndon-cuarteros-projects.vercel.app/login"
+                                path="https://osiris-updates.vercel.app/login"
                                 element={<Login />}
                         />
 
                         
                         <Route
-                                path="/register"
+                                path="https://osiris-updates.vercel.app/register"
                                 element={<Register />}
                         />
 
