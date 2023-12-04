@@ -51,8 +51,7 @@ function DashBoardNavbar (){
                                     <span className="visually-hidden">Toggle Dropdown</span>
                                 </button>
                                 <ul className="dropdown-menu dropdown-menu-end border-secondary rounded-1" style={{fontSize: 13 + "px"}}>
-                                    <li><a className="dropdown-item" href="#"><i className="fa-regular fa-user"></i>&nbsp; Profile</a></li>
-                                    <li><hr className="dropdown-divider"/></li>
+                                   
                                     <li><a className="dropdown-item" href="#" onClick={handleSignOut}><i className="fa-solid fa-arrow-right-from-bracket"></i>&nbsp; Log Out</a></li>
                                 </ul>
 
