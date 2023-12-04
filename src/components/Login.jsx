@@ -130,7 +130,7 @@ function LoginForm(){
                                
                                 <div className="card border-0 shadow " style={{width: 20 + 'rem',margin: 'auto',marginTop: 220 + 'px',marginBottom: 200 + 'px'}}>
 
-                                    <img src="./src/assets/osirislogo.png" className="card-img-top w-25 m-auto mt-5" alt="..."/>
+                                    <img src="https://i.ibb.co/thg7R8F/osirislogo.png" className="card-img-top w-25 m-auto mt-5" alt="..."/>
                                     <div>
                                     
                                         <div className='text-center'>
