@@ -13,7 +13,7 @@ function Navbar(props){
                 <nav className="navbar navbar-expand-lg py-3 navbar-light bg-white border fixed-top">
                 <div className="container">
                     <a className="navbar-brand fs-5" href="/">
-                        <img src="/src/assets/osirislogo.png" width="70"  className="align-middle me-1" alt="My Website"/>
+                        <img src="../src/assets/osirislogo.png" width="70"  className="align-middle me-1" alt="My Website"/>
                         <h2 className="float-end mt-3" id='brandtext'>Osiris</h2>
                     </a>
 
