@@ -64,7 +64,7 @@ function Routing (){
 
                         
                         <Route
-                                path="/login"
+                                path="https://osiris-mj0q6q9ct-lyndon-cuarteros-projects.vercel.app/login"
                                 element={<Login />}
                         />
 
