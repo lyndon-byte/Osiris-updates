@@ -12,7 +12,7 @@ function Footer(){
                     <div className="row">
               
                         <div className="col-lg-12 mt-5">
-                        <img src="./src/assets/osirislogo.png" width="70"  className="align-middle me-1 float-start" alt="My Website"/>
+                        <img src="https://i.ibb.co/thg7R8F/osirislogo.png" width="70"  className="align-middle me-1 float-start" alt="My Website"/>
                         <h2 className="mt-3 text-white mb-5" id='brandtext'>Osiris</h2>
                           <h4 className="text-white ">Inspiring Growth, One HR Step at a Time</h4>
                         </div>
