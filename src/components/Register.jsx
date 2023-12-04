@@ -15,7 +15,7 @@ const auth = getAuth(app);
 
 const actionCodeSettings = {
 
-    url: 'https://osiris-3670f.firebaseapp.com'
+    url: 'https://osiris-updates-ec2g.vercel.app/dashboard/reporting'
 
     
   };
