@@ -52,9 +52,7 @@ function Sidebar(){
                         <div className="col-12">
                             <Link to="./payroll" className={ activesidebarbtn === "payrollbtn" ? "btn btn-outline-primary border-0 rounded-1 mt-2 w-100 text-start active" : "btn btn-outline-primary border-0 rounded-1 mt-2 w-100 text-start"} onClick={ () => {setactivesidebarbtn('payrollbtn')}} ><span className="material-symbols-outlined material-icons">payments</span>&nbsp; <span className="sidebarbtntext">Payroll</span></Link>
                         </div>
-                        <div className="col-12">
-                            <Link to="./benefits" className={activesidebarbtn ==="benefitsbtn" ? "btn btn-outline-primary border-0 rounded-1 mt-2 w-100 text-start active" : "btn btn-outline-primary border-0 rounded-1 mt-2 w-100 text-start"} onClick={ () => {setactivesidebarbtn("benefitsbtn")}}><span className="material-symbols-outlined material-icons">volunteer_activism</span>&nbsp; <span className="sidebarbtntext">Benefits</span></Link>
-                        </div>
+                       
                         <div className="col-12">
                             <Link to="./attendance" className={activesidebarbtn ==="attendancebtn" ? "btn btn-outline-primary border-0 rounded-1 mt-2 w-100 text-start active" : "btn btn-outline-primary border-0 rounded-1 mt-2 w-100 text-start"} onClick={ () => {setactivesidebarbtn("attendancebtn")}}><span className="material-symbols-outlined material-icons">event_available</span>&nbsp; <span className="sidebarbtntext">Attendance</span></Link>
                         </div>
@@ -62,7 +60,7 @@ function Sidebar(){
                             <Link to="./performance" className={activesidebarbtn ==="performancebtn" ? "btn btn-outline-primary border-0 rounded-1 mt-2 w-100 text-start active" : "btn btn-outline-primary border-0 rounded-1 mt-2 w-100 text-start"} onClick={ () => {setactivesidebarbtn("performancebtn")}}><span className="material-symbols-outlined material-icons">psychology</span>&nbsp; <span className="sidebarbtntext">Performance</span></Link>
                         </div>
                         <div className="col-12">
-                            <Link to="./training" className={activesidebarbtn ==="trainingbtn" ? "btn btn-outline-primary border-0 rounded-1 mt-2 w-100 text-start active" : "btn btn-outline-primary border-0 rounded-1 mt-2 w-100 text-start"} onClick={ () => {setactivesidebarbtn("trainingbtn")}}><span className="material-symbols-outlined material-icons">model_training</span>&nbsp; <span className="sidebarbtntext">Training</span></Link>
+                            <Link to="./benefits" className={activesidebarbtn ==="benefitsbtn" ? "btn btn-outline-primary border-0 rounded-1 mt-2 w-100 text-start active" : "btn btn-outline-primary border-0 rounded-1 mt-2 w-100 text-start"} onClick={ () => {setactivesidebarbtn("benefitsbtn")}}><span className="material-symbols-outlined material-icons">volunteer_activism</span>&nbsp; <span className="sidebarbtntext">Benefits</span></Link>
                         </div>
                         <div className="col-12">
                             <Link to="../timein" target='_blank' className=" btn btn-outline-primary border-0 rounded-1  mt-2 w-100 text-start"><span className="material-symbols-outlined material-icons">widgets</span>&nbsp; <span className="sidebarbtntext">Time In App</span></Link>

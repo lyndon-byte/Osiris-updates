@@ -302,36 +302,12 @@ export default function Employee (){
                                                                 <p className="fw-bold">Start Date: &nbsp; <span className="fw-medium text-muted">{info.startdate}</span></p>
                                                                 <p className="fw-bold">Department: &nbsp; <span className="fw-medium text-muted">{info.department}</span></p>
                                                                 <p className="fw-bold">Designation: &nbsp; <span className="fw-medium text-muted">{info.designation}</span></p>
-                                                               
-                                                               
-                                                                
+                                                                <p className="fw-bold">SSS: &nbsp; <span className="fw-medium text-muted">{info.sssid}</span></p>
+                                                                <p className="fw-bold">PAG-IBIG: &nbsp; <span className="fw-medium text-muted">{info.pagibigid}</span></p>
+                                                                <p className="fw-bold">Philhealth: &nbsp; <span className="fw-medium text-muted">{info.philhealthid}</span></p>
+                                                                <p className="fw-bold">TIN: &nbsp; <span className="fw-medium text-muted">{info.tinid}</span></p>
                                                             </Col>
-                                                              
-                                                            <Col lg={5} sm={12}>
-                                                               
-                                                                <Accordion className="mt-4">
-                                                                    <Accordion.Item eventKey="0">
-                                                                        <Accordion.Header>Government Benefits ID numbers</Accordion.Header>
-                                                                        <Accordion.Body>
-                                                                            <ListGroup className="text-start">
-
                                                             
-
-                                                                                <ListGroup.Item  className="border-0 fw-bold">SSS: <span className="fw-medium text-muted">{info.sssid}</span>   
-                                                                                </ListGroup.Item>
-                                                                                <ListGroup.Item  className="border-0 fw-bold">PAG-IBIG: <span className="fw-medium text-muted">{info.pagibigid}</span>   
-                                                                                </ListGroup.Item>
-                                                                                <ListGroup.Item  className="border-0 fw-bold">Philhealth: <span className="fw-medium text-muted">{info.philhealthid}</span>   
-                                                                                </ListGroup.Item>
-                                                                                <ListGroup.Item className="border-0 fw-bold">TIN: <span className="fw-medium text-muted">{info.tinid}</span>   
-                                                                                </ListGroup.Item>
-                                                                              
-                                                                            </ListGroup>
-                                                                        </Accordion.Body>
-                                                                    </Accordion.Item>
-                                                                    
-                                                                </Accordion>
-                                                            </Col>
 
                                                             
 
@@ -345,12 +321,7 @@ export default function Employee (){
 
                                             }
                                         
-                                        <Col lg={12} sm={12}>
-
-                                              <p className="text-muted text-start mt-5 fw-bold">Work Schedule<span className="text-muted fw-medium">: Not set</span></p>
-
-                                        </Col>
-                                
+                                      
                                        
                                     </Col>
                                 </Row>
@@ -358,7 +329,7 @@ export default function Employee (){
                                     
                                         
                                         
-                                        <Col lg={8} sm={12} className="m-auto border rounded-2 p-5">
+                                        <Col lg={11} sm={12} className="m-auto border rounded-2 p-5">
 
                                             <Col lg={12}> 
                                                     <h5 className="text-muted mb-5 mt-4">Set or change schedule</h5>
@@ -401,7 +372,7 @@ export default function Employee (){
                                                             <Form.Label htmlFor="basic-url">End of shift time</Form.Label>
                                                             <InputGroup className="mb-3" >
                                                                 
-                                                                <Form.Control id="basic-url" aria-describedby="basic-addon3" disabled  />
+                                                                <Form.Control id="basic-url" aria-describedby="basic-addon3"  type="time" />
 
                                                             </InputGroup>
 
@@ -414,7 +385,7 @@ export default function Employee (){
                                                             <Form.Label htmlFor="basic-url">First 15 minutes break</Form.Label>
                                                             <InputGroup className="mb-3" >
                                                                 
-                                                                <Form.Control id="basic-url" aria-describedby="basic-addon3" disabled />
+                                                                <Form.Control id="basic-url" aria-describedby="basic-addon3"   type="time" />
 
                                                             </InputGroup>
 
@@ -427,7 +398,7 @@ export default function Employee (){
                                                             <Form.Label htmlFor="basic-url">Lunch Break</Form.Label>
                                                             <InputGroup className="mb-3" >
                                                                 
-                                                                <Form.Control id="basic-url" aria-describedby="basic-addon3" disabled />
+                                                                <Form.Control id="basic-url" aria-describedby="basic-addon3"   type="time" />
 
                                                             </InputGroup>
 
@@ -440,7 +411,7 @@ export default function Employee (){
                                                             <Form.Label htmlFor="basic-url">Last 15 minutes break</Form.Label>
                                                             <InputGroup className="mb-3" >
                                                                 
-                                                                <Form.Control id="basic-url" aria-describedby="basic-addon3" disabled />
+                                                                <Form.Control id="basic-url" aria-describedby="basic-addon3"   type="time" />
 
                                                             </InputGroup>
 
@@ -508,7 +479,6 @@ export default function Employee (){
                             <form className="d-flex" role="search">
                                 <input className="form-control me-2 rounded-1" type="number" onChange={(e) => {setsearchByNameandId(e.target.value)} } placeholder="Search Employee" aria-label="Search"/>
                                 
-                                <button className="btn btn-secondary w-50 border-0 rounded-1" type="submit"><i className="fa-solid fa-magnifying-glass"></i> Search</button>
                                 
                             </form>
                             <div className="form-text" id="basic-addon4">{ searchSuccess ? '' : 'No results found'}</div>
@@ -568,7 +538,7 @@ export default function Employee (){
                                                     <td className="data-row">{info.email}</td>
                                                     <td className="data-row">{info.designation}</td>
                                                     <td className="data-row">{info.department}</td>
-                                                    <td> <button className=" btn btn-primary rounded-1 border-0"  onClick={(e) => {setViewValue(info.employeenum)}}> <i className="fa-regular fa-eye"></i> </button>  <button className=" btn btn-secondary rounded-1 border-0"> <i className="fa-regular fa-pen-to-square"></i> </button>   </td>
+                                                    <td> <button className=" btn btn-primary rounded-1 border-0" id="viewbutton" onClick={(e) => {setViewValue(info.employeenum)}}> <i className="fa-regular fa-eye"></i> </button>  </td>
 
                                                 </tr>
 

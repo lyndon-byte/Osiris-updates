@@ -508,7 +508,7 @@ export default function Employee (){
                                                     <td className="data-row">{info.email}</td>
                                                     <td className="data-row">{info.designation}</td>
                                                     <td className="data-row">{info.department}</td>
-                                                    <td> <button className=" btn btn-primary rounded-1 border-0"  onClick={(e) => {setViewValue(info.employeenum)}}> <i className="fa-regular fa-eye"></i> </button> </td>
+                                                    <td> <button className=" btn btn-primary rounded-1 border-0" id="viewbutton" onClick={(e) => {setViewValue(info.employeenum)}}> <i className="fa-regular fa-eye"></i> </button> </td>
 
                                                 </tr>
 

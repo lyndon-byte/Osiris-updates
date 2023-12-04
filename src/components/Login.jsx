@@ -206,14 +206,9 @@ function LoginForm(){
                                        
                                         <div className='text-center'>
                                             <p style={{fontSize: 14 + 'px'}}>You don't have account? <a href="/register">Register</a></p>
-                                            <p className="mt-2 mb-1" style={{fontSize: 14 + 'px'}}><Link to="/register" className="text-success">Forgot your Password?</Link></p>
+                                            <p className="mt-2 mb-5" style={{fontSize: 14 + 'px'}}><Link to="/register" className="text-success">Forgot your Password?</Link></p>
                                         </div>                                                                                                    
-                                        <div className="row">
-                                            <div className="col-8 m-auto mb-4 mt-3 text-center">
-                                                
-                                                <button   className="btn btn-outline-primary w-100 rounded-1 text-muted border-secondary" style={{fontSize: 14 + "px"}} onClick={loginwithgoogle}><i className='fa-brands fa-google'></i> Sign in with google</button>
-                                            </div>
-                                        </div>         
+                                          
                                     </div>
                                     
                                 </div>

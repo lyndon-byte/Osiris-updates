@@ -1,6 +1,6 @@
 import { Bar } from 'react-chartjs-2';
 import { CDBContainer } from 'cdbreact';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {Chart as ChartJS, BarElement, CategoryScale, LinearScale} from 'chart.js'
 
 
@@ -39,24 +39,64 @@ const AddReports = () => {
         },
       ],
     });
-    
-    const handleAddReport = () => {
+
+    useEffect(() => {
+
+        if (department === "Marketing" && category === "Productivity"){
+
+            setbarValueforMarketingProductivity(score)
+
+        }else if (department === "Production" && category === "Productivity"){
+
+            setbarValueforProductionProductivity(score)
 
 
-        if(category == "Productivity"){
+        }else if (department === "Accounting" && category === "Productivity"){
 
-            if(department === "Marketing"){
+            
+            setbarValueforAccountingProductivity(score)
 
-                setbarValueforMarketingProductivity(score)
 
-            }
+        }else if (department === "Production" && category === "Quality"){
 
-        }else if(category == "Quality"){
+            setbarValueforProductionQuality(score)
+
+
+        }else if (department === "Accounting" && category === "Quality"){
+
+            
+            setbarValueforAccountingQuality(score)
+
+
+        }else if (department === "Marketing" && category === "Quality"){
+
+            
+            setbarValueforMarketingQuality(score)
+
 
         }
 
+        setData({
 
-    }
+            labels: ['Marketing', 'Production', 'Accounting'],
+            datasets: [
+                {
+                label: 'My First dataset',
+                backgroundColor: '#0d6efd',
+                borderColor: '#0d6efd',
+                data: [barValueforMarketingProductivity,barValueforProductionProductivity,barValueforAccountingProductivity],
+                },
+                {
+                label: 'My Second dataset',
+                backgroundColor: '#198754',
+                borderColor: '#198754',
+                data:[barValueforMarketingQuality,barValueforProductionQuality,barValueforAccountingQuality]
+                },
+            ],
+
+        })
+
+    },[score])
 
     console.log(data.datasets[0].data[0])
     return (
@@ -79,7 +119,7 @@ const AddReports = () => {
                    <div className="col-lg-6 m-auto">
                         <label className="form-label mt-3">Select Department</label>
                         <select className="form-select rounded-1" aria-label="Default select example" onChange={(e) => {setDepartment(e.target.value)}}>
-                            <option selected>Open this select menu</option>
+                            <option defaultValue>Open this select menu</option>
                             <option value="Marketing">Marketing</option>
                             <option value="Production">Production</option>
                             <option value="Accounting">Accounting</option>
@@ -110,16 +150,21 @@ const AddReports = () => {
                             </div>
 
                         </div>
-                        <button className='btn btn-primary w-100 mt-3' onClick={handleAddReport}>Save</button>
+                        <button className='btn btn-primary w-100 mt-3'>Save</button>
                    </div>
                    
             </div>
             
-            <div className="col-lg-6 col-sm-12">
+            <div className="col-lg-6 col-sm-12 mt-5">
                 <CDBContainer>
+                   
                     <h5 className="mt-5 mb-5">Performance of all Departments: <span className='text-muted'>{month == '' ? 'not set yet' : month}</span></h5>
+                    <button className='btn btn-primary m-1 rounded-1'>Productivity</button>
+                    <button className='btn btn-success m-1 rounded-1'>Quality</button>
                     <Bar data={data} options={{ responsive: true }} />
+                   
                 </CDBContainer>
+                
             </div>
        </div>
     );
