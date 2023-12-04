@@ -28,11 +28,11 @@ function Navbar(props){
 
                     
                     <div className="lc-block ms-auto d-grid gap-2 d-lg-block">
-                        <a className={color} href="./login" role="button">
+                        <a className={color} href="https://osiris-updates.vercel.app/login" role="button">
                         <i className='fa-regular fa-user'></i>
                         &nbsp; Login
                         </a>
-                        <a className={color2} href="./register" role="button">Register</a>
+                        <a className={color2} href="https://osiris-updates.vercel.app/register" role="button">Register</a>
                     </div>
                     </div>
                 </div>
